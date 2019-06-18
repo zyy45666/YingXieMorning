@@ -1,0 +1,13 @@
+<!--pages/home/home.wxml-->
+<view class = 'backpicture'>
+<text class = 'greet'>Good morning!</text>
+<image class='signImg' src='../../images/book.png'></image>
+ <button  class='signbt' bindtap='signbt' >
+    <text class='signtext'>晨读打卡</text>
+ </button>
+ <image class='campImg' src='../../images/camp.png'></image>
+ <button  class='campbt' bindtap='campbt' >
+    <text class='camptext'>训练营</text>
+ </button>
+ </view>
+

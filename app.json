@@ -5,7 +5,11 @@
     "pages/sign/sign",
     "pages/camp/camp",
     "pages/Setup/Setup",
-    "pages/more/more"
+    "pages/puton/puton",
+    "pages/more/more",
+    "pages/cet4/cet4",
+    "pages/cet6/cet6"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,2 +1,5 @@
 <!--pages/camp/camp.wxml-->
-<text>pages/camp/camp.wxml</text>
+<i-cell-group>
+    <i-cell title="CET4" is-link url='../cet4/cet4'></i-cell>
+    <i-cell title="CET6" is-link url='../cet6/cet6'></i-cell>
+</i-cell-group>

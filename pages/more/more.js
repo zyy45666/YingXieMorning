@@ -1,11 +1,13 @@
 // pages/more/more.js
+var app=getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    inputValue: '',
+    infoMess: ''
   },
 
   /**
@@ -62,5 +64,26 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  pwinput: function (e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
+
+  passbt:function()
+  {
+    console.info(this.data)
+    if(this.data.inputValue!='34567')
+    {
+      infoMess: '密码错误'
+    }
+    else{
+      wx.navigateTo({
+        url: '../puton/puton'
+      })
+    }
   }
+
 })

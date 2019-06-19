@@ -1,17 +1,17 @@
-// pages/home/home.js
+// pages/readingresult/readingresult.js
 Page({
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
+  /**
+   * 页面的初始数据
+   */
+  data: {
 
-    },
+  },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
 
   },
 
@@ -62,16 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
- signbt:function(){
-   wx.navigateTo({
-     url:'../sign/sign'
-   })
- },
- campbt: function () {
-    wx.navigateTo({
-      url: '../camp/camp'
-    })
   }
 })

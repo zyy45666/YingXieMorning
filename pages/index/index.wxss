@@ -13,11 +13,9 @@
 }
 
 .userinfo-nickname {
-  color:black;
+  color: #aaa;
 }
 
-.enter{
-   color:white;
-   background:green;
-   padding: 5px 10px;
+.usermotto {
+  margin-top: 200px;
 }

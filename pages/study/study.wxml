@@ -1,9 +1,0 @@
-<!--pages/study/study.wxml-->
-<view class='title' catchtap='title'>
-<text>五十音图</text>
-</view>
-<view class='title2'>
-<text class="voice1" catchtap='voice1'>清音</text>
-<text class='voice2'>浊音</text>
-<text class='voice3'>拗音</text>
-</view>

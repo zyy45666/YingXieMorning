@@ -50,12 +50,5 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  },
-
-  enter: function(){
-    wx.navigateTo({
-      url: '../study/study'
-    })
-
   }
 })

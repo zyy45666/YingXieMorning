@@ -1,0 +1,7 @@
+
+{
+  "usingComponents": {
+    "i-divider": "../../dist/divider/index",
+    "i-input": "../../dist/input/index"
+  }
+}

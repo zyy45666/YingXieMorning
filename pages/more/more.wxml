@@ -1,0 +1,11 @@
+<!--pages/more/more.wxml-->
+<image class='EAImg' src='../../images/EA.jpg'></image>
+<view class="section">
+  <input class='password' bindinput="pwinput" confirm-type="go" maxlength="10" placeholder="请输入密码（最长10位）" />
+</view>
+<view class="bt1">
+<button class="passbt" bindtap="passbt">
+   <text class='confirm'> 确   认</text>
+</button>
+  </view>
+

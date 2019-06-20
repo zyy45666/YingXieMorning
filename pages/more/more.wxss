@@ -1,0 +1,44 @@
+/* pages/more/more.wxss */
+.EAImg{
+  width:100%;
+  height:350rpx;
+  padding-top:10%;
+
+  }
+
+.section{
+  display: flex;
+  align-items: center;
+  padding-top:2%;
+  padding-left:2%;
+  padding-right:2%;
+  height:14%
+}
+.password{
+  background-color: white;
+  padding-top:1%;
+  padding-left:1%;
+  padding-right:1%;
+  padding-bottom:1%;
+  height:75rpx;
+  width:100%;
+  border-radius: 18rpx;
+  border:3rpx solid steelblue;
+}
+.passbt{
+  width: 720rpx;
+  height: 100rpx;
+  background-color:#1aa7db;
+  border-radius: 18rpx;
+  font-size: 25rpx;
+  margin-top:3%;
+  margin-left:2%;
+  
+}
+passbt::after{
+  border: 0;
+}
+.confirm{
+  font-size:40rpx;
+  color:rgb(255, 255, 255); 
+}

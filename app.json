@@ -1,5 +1,4 @@
 {
-  
   "pages": [
     "pages/home/home",
     "pages/sign/sign",
@@ -8,15 +7,14 @@
     "pages/puton/puton",
     "pages/more/more",
     "pages/cet4/cet4",
-    "pages/cet6/cet6"
-    
+    "pages/cet6/cet6",
+    "pages/info/info"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1aa7db",
     "navigationBarTitleText": "英协morning打卡",
     "navigationBarTextStyle": "white"
-   
   },
   "tabBar": {
     "color": "#a9b7b7",
@@ -26,17 +24,15 @@
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath":"images/home.png",
-        "selectedIconPath":"images/home (1).png"
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home (1).png"
       },
-      
       {
         "pagePath": "pages/Setup/Setup",
         "text": "个人中心",
         "iconPath": "images/me.png",
         "selectedIconPath": "images/me(1).png"
       },
-
       {
         "pagePath": "pages/more/more",
         "text": "更多",
@@ -45,6 +41,5 @@
       }
     ]
   },
- 
   "sitemapLocation": "sitemap.json"
 }

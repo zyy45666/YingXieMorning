@@ -1,0 +1,8 @@
+<i-panel title="请输入您的信息">
+  <view style="padding: 15px;">
+    <i-input value="{{ schoolId }}" type="number" title="学号" 
+    autofocus placeholder="请输入学号" bind:change="idChange"/>
+    <i-input value="{{ name }}" title="姓名" placeholder="请输入姓名" bind:change="nameChange"/>
+  </view>
+  <i-button bind:click="confirm" type="primary">确认</i-button>
+</i-panel>

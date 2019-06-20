@@ -1,0 +1,72 @@
+/* pages/home/home.wxss */
+.backpicture{  
+ width:100%; 
+ height: 100%;
+ background: url(http://g.hiphotos.baidu.com/image/pic/item/960a304e251f95cacf9b2b2ec7177f3e6709523f.jpg)no-repeat;   
+ background-size: cover;
+ z-index: 0;  
+ position: absolute;
+}
+
+.greet{
+  font-size:85rpx;
+  color:white; 
+  font-style:italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top:5ch
+}
+.signbt{
+  width: 450rpx;
+  height: 125rpx;
+  background-color: rgba(255, 255, 255, 0.514);
+  border-radius: 70rpx;
+  font-size: 25rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left:11%;
+  margin-top:10%;
+}
+.signImg {
+width: 95rpx;
+height: 95rpx;
+padding-left:11%;
+padding-top:12%;
+float:left;
+}
+signbt::after{
+  border: 0;
+}
+.signtext{
+  font-size:50rpx;
+  color:rgb(85, 147, 175); 
+}
+.campbt{
+  width: 450rpx;
+  height: 125rpx;
+  background-color: rgba(255, 255, 255, 0.514);
+  border-radius: 70rpx;
+  font-size: 25rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left:11%;
+  margin-top:14%;
+}
+.campImg {
+width: 95rpx;
+height: 95rpx;
+padding-left:11%;
+padding-top:15.5%;
+float:left;
+}
+campbt::after{
+  border: 0;
+}
+.camptext{
+  font-size:50rpx;
+  color:rgb(85, 147, 175);
+  font-family:
+}

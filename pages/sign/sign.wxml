@@ -1,0 +1,12 @@
+<!--pages/sign/sign.wxml-->
+<view class="title">今日文章</view>
+<view class="title-container">
+  <text class="article-title">Apple Launches New iPhones, New Health Features for Watch</text>
+</view>
+<i-divider content="YingXie Morning" color="#5cadff" lineColor="#5cadff" height="2"></i-divider>
+<view class="article-container">
+  <view class="article-container1">
+  <text class="aritle-content">Apple announced three new iPhones and improved health features for its watches during a launch event on Wednesday.</text>
+  </view>
+</view>
+<i-button bind:click="jumpPage" type="primary" shape="circle" size="large">阅读完成</i-button>

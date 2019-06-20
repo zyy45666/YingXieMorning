@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.6.6",
 	"appid": "wx67d0b99fe22fe41f",
-	"projectname": "YingXieMorning",
+	"projectname": "miniprogram-test-3",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

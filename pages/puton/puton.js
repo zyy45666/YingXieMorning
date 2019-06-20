@@ -1,12 +1,17 @@
 // pages/puton/puton.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
+    data: {
+      date: '2016-11-08',
+      time: '12:00',
+      index: 0,
+      article: '',
 
-  },
+    },
 
   /**
    * 生命周期函数--监听页面加载
@@ -62,5 +67,27 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+
+
+  //  点击时间组件确定事件
+  bindTimeChange: function (e) {
+    this.setData({
+      time: e.detail.value
+    })
+  },
+  //  点击日期组件确定事件
+  bindDateChange: function (e) {
+    this.setData({
+      date: e.detail.value
+    })
+  },
+  
+  testinput: function (e) {
+    this.setData({
+      article: e.detail.value
+    })
+  },
+
 })

@@ -6,8 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    inputValue: '',
-    infoMess: ''
+    inputValue: ''
   },
 
   /**
@@ -77,7 +76,12 @@ Page({
     console.info(this.data)
     if(this.data.inputValue!='34567')
     {
-      infoMess: '密码错误'
+      wx.showToast({
+        title: "密码错误",
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })  
     }
     else{
       wx.navigateTo({

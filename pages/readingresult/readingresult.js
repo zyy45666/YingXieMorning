@@ -1,4 +1,4 @@
-// pages/study/study.js
+// pages/readingresult/readingresult.js
 Page({
 
   /**
@@ -62,11 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  voice1:function(){
-    wx.switchTab({
-      url: '../voice/voice'
-    })
   }
 })

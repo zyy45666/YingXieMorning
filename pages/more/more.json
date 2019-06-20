@@ -2,8 +2,6 @@
   "navigationBarBackgroundColor": "#1aa7db",
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "管理员入口",
-  "backgroundTextStyle": "light",
-  "usingComponents": {
-    "i-button": "../../dist/button/index"
-  }
+  "backgroundTextStyle": "light"
+
 }

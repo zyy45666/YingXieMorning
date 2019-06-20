@@ -1,1 +1,27 @@
 /* pages/puton/puton.wxss */
+.setdata{
+  display: flex;
+  justify-content: center;
+  font-size:45rpx;
+}
+.detailText{
+  background-color: white;
+  padding-top:1%;
+  margin-left:1%;
+  width:97%;
+  padding-bottom:1%;
+  height:400rpx;
+  border:3rpx solid steelblue;
+}
+.putonbt{
+  width: 96%;
+  height: 100rpx;
+  background-color:#1aa7db;
+  border-radius: 18rpx;
+  font-size: 25rpx;
+  margin-top:5%;
+  margin-left:2%;
+}
+putonbt::after{
+  border: 0;
+}

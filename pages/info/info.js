@@ -39,7 +39,7 @@ Page({
       data: {
         Token: wx.getStorageSync("Token"),
         Name: this.data.name,
-        SchoolID: this.data.schoolId
+        SchoolID: this.data.schoolId.toString()
       },
       success: (res) => {
         wx.hideLoading();
@@ -57,7 +57,8 @@ Page({
           title: '上传失败，请稍后再试',
           icon: 'none'
         })
-      }
+      },
+      complete: (res) => console.log(res)
     });
   },
 

@@ -1,6 +1,7 @@
 //app.js
 
 import * as config from './config.js'
+const Towxml = require('/towxml/main');
 
 App({
 
@@ -32,12 +33,14 @@ App({
                 }
               })
             }
-          }
+          },
+          complete:(res)=>console.log(res)
         });
       }
     })
   },
   globalData: {
     userInfo: null
-  }
+  },
+  towxml: new Towxml()
 })

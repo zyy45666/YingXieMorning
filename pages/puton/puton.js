@@ -1,93 +1,70 @@
 // pages/puton/puton.js
+
+import * as config from './../../config.js'
+
 var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
-    data: {
-      date: '2016-11-08',
-      time: '12:00',
-      index: 0,
-      article: '',
+  data: {
+    date: '2019-6-21',
+    index: 0,
+    article: '',
 
-    },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-
-
-  //  点击时间组件确定事件
-  bindTimeChange: function (e) {
-    this.setData({
-      time: e.detail.value
-    })
   },
   //  点击日期组件确定事件
-  bindDateChange: function (e) {
+  bindDateChange: function(e) {
     this.setData({
       date: e.detail.value
     })
   },
-  
-  testinput: function (e) {
+
+  textinput: function(e) {
     this.setData({
       article: e.detail.value
-    })
+    });
   },
+
+  putonbt() {
+    if (this.data.article.length == 0) {
+      wx.showToast({
+        title: '请输入文章',
+        icon: 'none'
+      });
+      return;
+    }
+    wx.showLoading({
+      title: '发布中',
+    });
+    wx.request({
+      url: config.publishUrl,
+      method: 'POST',
+      data: {
+        Token: wx.getStorageSync('Token'),
+        Content: this.data.article,
+        Time: Date.parse(this.data.date)/1000
+      },
+      success: (res) => {
+        wx.hideLoading();
+        if (res.statusCode == 200) {
+          wx.showToast({
+            title: '发布成功'
+          });
+          wx.navigateBack({
+            delta: 1
+          });
+        } else {
+          wx.showToast({
+            title: '发布失败，请重试',
+            icon: 'none'
+          })
+        }
+      },
+      fail: () => wx.hideLoading(),
+      complete: (res) => console.log(res)
+    })
+  }
 
 })

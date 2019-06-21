@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "今日文章",
   "usingComponents": {
     "i-divider": "../../dist/divider/index",
     "i-button": "../../dist/button/index"

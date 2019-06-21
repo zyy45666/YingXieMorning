@@ -1,50 +1,5 @@
-/* pages/sign/sign.wxss */
-.title{
-  font-size: 45rpx;
-  color:white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #1aa7db;
-  padding-bottom: 2%;
-}
-.title-container{
-  text-align:justify;
-  opacity: 1;
-  padding:10rpx 20rpx 10rpx 20rpx;
-}
-.article-title{
-  font-size: 60rpx;
-  font-weight: bold;
-  color:black;
-}
-.resource{
-  margin:1rpx;
-  color:#6a727cd2;
-  font-size:40rpx;
-  opacity: 1;
-  display: flex;
-}
-.resource::after{
-  border:0;
-}
-.article-container{
-  background-color:#dddee1;
-  border-radius: 10rpx;
-  margin-top:40rpx;
-  margin-left:20rpx;
-  margin-right:20rpx;
-  margin-bottom: 30rpx;
-  text-align:justify;
-}
-.article-container1{
-  background-color:#dddee1;
-  padding:20rpx;
-  text-align:justify;
-  border-radius: 10rpx;
-}
-.article-content{
-  color:#495060;
-  font-size:40rpx;
-  padding: 3rpx;
-}
+@import '../../towxml/style/main.wxss';
+
+@import '../../towxml/style/theme/light.wxss';
+
+@import '../../towxml/style/theme/dark.wxss';

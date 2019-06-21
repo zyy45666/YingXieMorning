@@ -1,16 +1,12 @@
 // pages/sign/sign.js
 
 import * as config from '../../config.js'
+const { $Toast } = require('../../dist/base/index');
 const app = getApp();
 Page({
 
   data: {
     article: {}
-  },
-  jumpPage: function() {
-    wx.navigateTo({
-      url: '../readingresult/readingresult'
-    })
   },
   onLoad: function() {
     const that = this;
@@ -42,6 +38,18 @@ Page({
       fail: () => wx.hideLoading(),
       complete: (res) => console.log(res)
     });
+  },
+  handleClick: function(){
+    wx.showToast({
+      title: '打卡成功',
+      icon: 'success',
+      duration: 1500
+    })
+    setTimeout(function(){
+      wx.navigateBack({
+        delta: 1
+      })
+    },1500)
   }
 
 })

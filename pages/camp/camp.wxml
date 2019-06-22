@@ -1,5 +1,17 @@
 <!--pages/camp/camp.wxml-->
-<i-cell-group>
-    <i-cell title="CET4" is-link url='../cet4/cet4'></i-cell>
-    <i-cell title="CET6" is-link url='../cet6/cet6'></i-cell>
-</i-cell-group>
+<view class="camp">
+ <view class="left">
+  <button class="cet4btn" bindtap='cet4bt'>
+    <image class="cet4Img" src='/images/cet4.png'></image>
+  </button>
+ </view>
+ <view class="right">
+  <button class="cet6btn" bindtap='cet6bt'>
+    <image class="cet6Img" src="/images/cet6.png"></image>
+  </button>
+ </view>
+ <button class='Hbtn' bindtap='Hbt'>
+   <text class="HaGT">Let's Have a try!</text>
+  </button>
+</view>
+

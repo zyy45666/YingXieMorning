@@ -1,1 +1,69 @@
 /* pages/camp/camp.wxss */
+.camp{
+  width: 100%;
+  height: 100%;  
+  position: absolute;
+}
+.left{
+  padding-top: 15ch;
+  padding-bottom: 10ch;
+  width: 48%;
+  margin-top: 35rpx;
+  margin-left: 10rpx;
+  float: left;
+}
+.right{
+  padding-top: 15ch;
+  padding-bottom: 10ch;
+  width: 48%;
+  margin-top: 35rpx;
+  margin-right: 10rpx;
+  float: right;
+}
+.cet4btn{
+  margin: auto;
+  background-color: white;
+  align-content:center;
+  justify-content: center;
+}
+.cet4btn::after{
+  border: none;
+}
+
+.cet4Img{
+  width: 250rpx;
+  height:250rpx;
+}
+.cet6btn{
+  margin: auto;
+  background-color: white;
+  align-content:center;
+  justify-content: center;
+}
+.cet6btn::after{
+  border: none;
+}
+
+.cet6Img{
+  width: 250rpx;
+  height:250rpx;
+}
+
+.Hbtn{
+  background-color: white;
+  align-content:center;
+  justify-content: center;
+}
+.Hbtn::after{
+  border: none;
+}
+.HaGT{
+  font-size: 50rpx;
+  color:burlywood; 
+  font-style:italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+

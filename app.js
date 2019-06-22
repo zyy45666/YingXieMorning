@@ -6,6 +6,35 @@ const Towxml = require('/towxml/main');
 App({
 
   onLaunch: function() {
+    var that = this;
+    var token = wx.getStorageSync("Token");
+    if (token && token.length != 0) {
+      wx.request({
+        url: config.directLogin,
+        method: 'POST',
+        data: {
+          Token: token
+        },
+        success: (res) => {
+          if (res.statusCode != 200) {
+            that.login();
+          } else if (res.statusCode == 200) {
+            that.checkInfo();
+          }
+        },
+        complete: (res) => console.log(res)
+      });
+    } else {
+      that.login();
+    }
+
+  },
+  globalData: {
+    userInfo: null
+  },
+  towxml: new Towxml(),
+  login() {
+    var that = this;
     wx.login({
       success: (res) => {
         wx.request({
@@ -18,29 +47,33 @@ App({
             if (res.statusCode == 200) {
               wx.setStorageSync("ID", res.data.ID);
               wx.setStorageSync("Token", res.data.Token);
-              wx.request({
-                url: config.getUserInfoUrl,
-                method: 'POST',
-                data: {
-                  Token: res.data.Token
-                },
-                success: (res) => {
-                  if (res.statusCode == 200 && (res.data.Name.length + res.data.SchoolID.length) == 0){
-                    wx.navigateTo({
-                      url: '/pages/info/info',
-                    });
-                  }
-                }
-              })
+              that.checkInfo();
             }
           },
-          complete:(res)=>console.log(res)
+          complete: (res) => console.log(res)
         });
       }
+    });
+  },
+  checkInfo: () => {
+    wx.request({
+      url: config.getUserInfoUrl,
+      method: 'POST',
+      data: {
+        Token: wx.getStorageSync("Token")
+      },
+      success: (res) => {
+        if (res.statusCode == 200 && (res.data.Name.length + res.data.SchoolID.length) == 0) {
+          wx.navigateTo({
+            url: '/pages/info/info',
+          });
+        }
+        if (res.statusCode == 200 && (res.data.Name.length + res.data.SchoolID.length) != 0) {
+          wx.setStorageSync('Name', res.data.Name);
+          wx.setStorageSync('SchoolID', res.data.SchoolID);
+        }
+      },
+      complete: (res) => console.log(res)
     })
-  },
-  globalData: {
-    userInfo: null
-  },
-  towxml: new Towxml()
+  }
 })

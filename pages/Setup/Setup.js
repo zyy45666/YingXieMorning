@@ -3,29 +3,25 @@ var app = getApp
 var util = require('../../utils/util.js');
 
 Page({
-
-    /**
-     * 页面的初始数据
-     */
-    data: {
-      //用户个人信息
-      userInfo: {
-        avatarUrl:"",//用户头像
-        nickName:"",//用户昵称
-        },
-
-      objectId: '',
-      days: [],
-      signUp: [],
-      cur_year: 0,
-      cur_month: 0,
-      count: 0
-    
+  data: {
+    //用户个人信息
+    userInfo: {
+      avatarUrl: "", //用户头像
+      nickName: "", //用户昵称
     },
-    /**
-     *点击添加地址事件
-     */
-    add_address_fun:function(){
+
+    objectId: '',
+    days: [],
+    signUp: [],
+    cur_year: 0,
+    cur_month: 0,
+    count: 0
+
+  },
+  /**
+   *点击添加地址事件
+   */
+  add_address_fun: function() {
     wx.navigateTo({
       url: 'add_address/add_address',
     })
@@ -34,13 +30,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     /**
      * 获取用户信息
      */
     wx.getUserInfo({
-      success: function (res) {
+      success: function(res) {
         console.log(res);
         var avatarUrl = 'userInfo.avatarUrl';
         var nickName = 'userInfo.nickName';
@@ -50,8 +46,9 @@ Page({
         })
       }
     })
-
-    this.setData({ objectId: options.objectId });
+    this.setData({
+      objectId: options.objectId
+    });
     //获取当前年月  
     const date = new Date();
     const cur_year = date.getFullYear();
@@ -66,67 +63,23 @@ Page({
       cur_month,
       weeks_ch
     })
-
-
-
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  getThisMonthDays: function (year, month) {
+  getThisMonthDays: function(year, month) {
     return new Date(year, month, 0).getDate()
   },
 
   // 获取当月第一天星期几
-  getFirstDayOfWeek: function (year, month) {
+  getFirstDayOfWeek: function(year, month) {
     return new Date(Date.UTC(year, month - 1, 1)).getDay();
   },
 
   // 计算当月1号前空了几个格子，把它填充在days数组的前面
-  calculateEmptyGrids: function (year, month) {
+  calculateEmptyGrids: function(year, month) {
     var that = this;
     //计算每个月时要清零
-    that.setData({ days: [] });
+    that.setData({
+      days: []
+    });
     const firstDayOfWeek = this.getFirstDayOfWeek(year, month);
     if (firstDayOfWeek > 0) {
       for (let i = 0; i < firstDayOfWeek; i++) {
@@ -148,7 +101,7 @@ Page({
   },
 
   // 绘制当月天数占的格子，并把它放到days数组中
-  calculateDays: function (year, month) {
+  calculateDays: function(year, month) {
     var that = this;
     const thisMonthDays = this.getThisMonthDays(year, month);
     for (let i = 1; i <= thisMonthDays; i++) {
@@ -164,7 +117,7 @@ Page({
   },
 
   //匹配判断当月与当月哪些日子签到打卡
-  onJudgeSign: function () {
+  onJudgeSign: function() {
     var that = this;
     var signs = that.data.signUp;
     var daysArr = that.data.days;
@@ -181,11 +134,13 @@ Page({
         }
       }
     }
-    that.setData({ days: daysArr });
+    that.setData({
+      days: daysArr
+    });
   },
 
   // 切换控制年月，上一个月，下一个月
-  handleCalendar: function (e) {
+  handleCalendar: function(e) {
     const handle = e.currentTarget.dataset.handle;
     const cur_year = this.data.cur_year;
     const cur_month = this.data.cur_month;
@@ -221,12 +176,12 @@ Page({
   },
 
   //获取当前用户该任务的签到数组
-  onGetSignUp: function () {
+  onGetSignUp: function() {
     var that = this;
     var Task_User = Bmob.Object.extend("task_user");
     var q = new Bmob.Query(Task_User);
     q.get(that.data.objectId, {
-      success: function (result) {
+      success: function(result) {
         that.setData({
           signUp: result.get("signUp"),
           count: result.get("score")
@@ -234,12 +189,22 @@ Page({
         //获取后就判断签到情况
         that.onJudgeSign();
       },
-      error: function (object, error) {
-      }
+      error: function(object, error) {}
     });
+  },
+  btn: function(e) {
+    console.log(e);
+    const year = this.data.cur_year;
+    const month = this.data.cur_month;
+    var day = parseInt(e.currentTarget.id);
+    var tapData = {
+      year: year,
+      month: month,
+      day: day
+    }
+    wx.setStorageSync('tapData', tapData);
+    wx.navigateTo({
+      url: '/pages/article/article',
+    })
   }
 })
-
-    
-
-

@@ -2,11 +2,15 @@
 
 import * as config from '../../config.js'
 const { $Toast } = require('../../dist/base/index');
+var util = require('../../utils/util.js');
 const app = getApp();
 Page({
 
   data: {
-    article: {}
+    article: {},
+    cur_year:0,
+    cur_month:0,
+    cur_day:0
   },
   onLoad: function() {
     const that = this;
@@ -40,6 +44,16 @@ Page({
     });
   },
   handleClick: function(){
+    const date = new Date();
+    const cur_year = date.getFullYear();
+    const cur_month = date.getMonth() + 1;
+    const cur_day = date.getDate();
+    var tapData={
+      year:cur_year,
+      month:cur_month,
+      day:cur_day,
+    };
+    console.log(tapData);
     wx.showToast({
       title: '打卡成功',
       icon: 'success',

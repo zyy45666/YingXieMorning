@@ -8,7 +8,8 @@
     "pages/more/more",
     "pages/cet4/cet4",
     "pages/cet6/cet6",
-    "pages/info/info"
+    "pages/info/info",
+    "pages/article/article"
   ],
   "window": {
     "backgroundTextStyle": "light",

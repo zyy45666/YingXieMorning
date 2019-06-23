@@ -1,0 +1,5 @@
+<!--pages/article/article.wxml-->
+<button bindtap='vbt'>
+  <view wx:if="{{click != false}}">点击一下，查看日期</view>
+  <view wx:else>{{year}}年{{month}}月{{day}}日</view>
+</button>

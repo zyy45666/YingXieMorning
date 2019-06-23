@@ -1,18 +1,27 @@
-// pages/cet4/cet4.js
+// pages/article/article.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    year: 0,
+    month: 0,
+    day: 0,
+    click: true,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function(options) {
-
+    var tapData = (wx.getStorageSync('tapData') || []);
+    console.log(tapData);
+  },
+  vbt: function() {
+    var tapData = (wx.getStorageSync('tapData') || []);
+    this.setData({
+      year: tapData.year,
+      month: tapData.month,
+      day: tapData.day,
+      click: false,
+    })
   },
 
   /**

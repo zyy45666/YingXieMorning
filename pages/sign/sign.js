@@ -1,16 +1,12 @@
 // pages/sign/sign.js
 
 import * as config from '../../config.js'
-const { $Toast } = require('../../dist/base/index');
 var util = require('../../utils/util.js');
 const app = getApp();
 Page({
 
   data: {
     article: {},
-    cur_year:0,
-    cur_month:0,
-    cur_day:0
   },
   onLoad: function() {
     const that = this;
@@ -37,33 +33,41 @@ Page({
           that.setData({
             article: data
           });
+        } else {
+          wx.navigateBack({
+            delta: 1
+          });
+          wx.showToast({
+            title: '该天没有文章',
+            icon: 'none'
+          });
         }
       },
       fail: () => wx.hideLoading(),
       complete: (res) => console.log(res)
     });
   },
-  handleClick: function(){
-    const date = new Date();
-    const cur_year = date.getFullYear();
-    const cur_month = date.getMonth() + 1;
-    const cur_day = date.getDate();
-    var tapData={
-      year:cur_year,
-      month:cur_month,
-      day:cur_day,
-    };
-    console.log(tapData);
-    wx.showToast({
-      title: '打卡成功',
-      icon: 'success',
-      duration: 1500
-    })
-    setTimeout(function(){
-      wx.navigateBack({
-        delta: 1
-      })
-    },1500)
+  handleClick: function() {
+    wx.request({
+      url: config.punchUrl,
+      method: 'POST',
+      data: {
+        Token: wx.getStorageSync("Token")
+      },
+      success: (res) => {
+        if (res.statusCode == 200) {
+          wx.showToast({
+            title: '打卡成功',
+          });
+        } else {
+          wx.showToast({
+            title: '请勿重复打卡',
+            icon: 'none'
+          });
+        }
+      },
+      complete: (res) => console.log(res)
+    });
   }
 
 })

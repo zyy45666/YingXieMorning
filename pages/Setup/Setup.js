@@ -1,6 +1,7 @@
 // pages/Setup/Setup.js
 var app = getApp
 var util = require('../../utils/util.js');
+import * as config from '../../config.js'
 
 Page({
   data: {
@@ -122,7 +123,7 @@ Page({
     var signs = that.data.signUp;
     var daysArr = that.data.days;
     for (var i = 0; i < signs.length; i++) {
-      var current = new Date(signs[i].date.replace(/-/g, "/"));
+      var current = new Date(signs[i]);
       var year = current.getFullYear();
       var month = current.getMonth() + 1;
       var day = current.getDate();
@@ -177,20 +178,41 @@ Page({
 
   //获取当前用户该任务的签到数组
   onGetSignUp: function() {
+    // var that = this;
+    // var Task_User = Bmob.Object.extend("task_user");
+    // var q = new Bmob.Query(Task_User);
+    // q.get(that.data.objectId, {
+    //   success: function(result) {
+    //     that.setData({
+    //       signUp: result.get("signUp"),
+    //       count: result.get("score")
+    //     });
+    //     //获取后就判断签到情况
+    //     that.onJudgeSign();
+    //   },
+    //   error: function(object, error) {}
+    // });
     var that = this;
-    var Task_User = Bmob.Object.extend("task_user");
-    var q = new Bmob.Query(Task_User);
-    q.get(that.data.objectId, {
-      success: function(result) {
-        that.setData({
-          signUp: result.get("signUp"),
-          count: result.get("score")
-        });
-        //获取后就判断签到情况
-        that.onJudgeSign();
+    wx.request({
+      url: config.punches,
+      method: 'POST',
+      data: {
+        Token: wx.getStorageSync('Token')
       },
-      error: function(object, error) {}
-    });
+      success: (res) => {
+        if (res.statusCode == 200) {
+          var signs = [];
+          res.data.logs.forEach((e) => {
+            signs.push(e.Time);
+          });
+          that.setData({
+            signUp: signs,
+            count: signs.length
+          });
+        }
+      },
+      complete: (res) => console.log(res)
+    })
   },
   btn: function(e) {
     console.log(e);

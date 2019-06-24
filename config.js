@@ -6,3 +6,5 @@ export const getUserInfoUrl = mainURL + 'userinfo';
 export const setUserInfoUrl = mainURL + 'setuserinfo';
 export const publishUrl = mainURL + 'publish';
 export const articleUrl = mainURL + 'article';
+export const punchUrl = mainURL + 'punch';
+export const punches = mainURL + 'punches';

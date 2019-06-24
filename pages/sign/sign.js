@@ -7,6 +7,7 @@ Page({
 
   data: {
     article: {},
+    status: false,
   },
   onLoad: function() {
     const that = this;
@@ -31,16 +32,20 @@ Page({
           data.theme = 'light';
 
           that.setData({
-            article: data
+            article: data,
+            status: true,
           });
         } else {
-          wx.navigateBack({
-            delta: 1
-          });
           wx.showToast({
-            title: '该天没有文章',
-            icon: 'none'
+            title: '今天没有文章',
+            icon: 'none',
+            duration: 1500
           });
+          setTimeout(function(){
+            wx.navigateBack({
+              delta: 1
+            });
+          },1500)
         }
       },
       fail: () => wx.hideLoading(),
@@ -58,7 +63,13 @@ Page({
         if (res.statusCode == 200) {
           wx.showToast({
             title: '打卡成功',
-          });
+            duration: 1500
+          })
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1
+            });
+          }, 1500)
         } else {
           wx.showToast({
             title: '请勿重复打卡',

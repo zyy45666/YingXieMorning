@@ -4,12 +4,8 @@ import * as config from './../../config.js'
 
 var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    date: '2019-6-21',
+    date: '',
     index: 0,
     article: '',
 
@@ -50,11 +46,14 @@ Page({
         wx.hideLoading();
         if (res.statusCode == 200) {
           wx.showToast({
-            title: '发布成功'
+            title: '发布成功',
+            duration: 1500
           });
-          wx.navigateBack({
-            delta: 1
-          });
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1
+            });
+          }, 1500)
         } else {
           wx.showToast({
             title: '发布失败，请重试',

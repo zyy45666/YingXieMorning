@@ -2,10 +2,7 @@
 import * as config from './../../config.js'
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  
   data: {
     name: '',
     schoolId: ''

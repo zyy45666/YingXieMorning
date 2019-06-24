@@ -1,9 +1,9 @@
 <!--pages/sign/sign.wxml-->
 
-<import src="/towxml/entry.wxml"/>
-<template is="entry" data="{{...article}}"/>
+<import src="/towxml/entry.wxml" />
+<template class='article' is="entry" data="{{...article}}" />
 
-<i-divider content="阅读完成，打卡吧！"></i-divider>
-<i-button bind:click="handleClick" type="success" shape="circle" size="small">打卡</i-button>
-
-
+<view wx:if="{{status==true}}">
+  <i-divider content="阅读完成，打卡吧！"></i-divider>
+  <i-button bind:click="handleClick" type="success" shape="circle" size="small">打卡</i-button>
+</view>

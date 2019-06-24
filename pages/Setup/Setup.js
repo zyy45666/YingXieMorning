@@ -30,7 +30,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onShow: function(options) {
     var that = this;
     /**
      * 获取用户信息
@@ -174,20 +174,6 @@ Page({
 
   //获取当前用户该任务的签到数组
   onGetSignUp: function() {
-    // var that = this;
-    // var Task_User = Bmob.Object.extend("task_user");
-    // var q = new Bmob.Query(Task_User);
-    // q.get(that.data.objectId, {
-    //   success: function(result) {
-    //     that.setData({
-    //       signUp: result.get("signUp"),
-    //       count: result.get("score")
-    //     });
-    //     //获取后就判断签到情况
-    //     that.onJudgeSign();
-    //   },
-    //   error: function(object, error) {}
-    // });
     var that = this;
     wx.request({
       url: config.punches,
@@ -212,7 +198,6 @@ Page({
     })
   },
   btn: function(e) {
-    console.log(e);
     const year = this.data.cur_year;
     const month = this.data.cur_month;
     var day = parseInt(e.currentTarget.id);

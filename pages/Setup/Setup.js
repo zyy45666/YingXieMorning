@@ -11,7 +11,6 @@ Page({
       nickName: "", //用户昵称
     },
 
-    objectId: '',
     days: [],
     signUp: [],
     cur_year: 0,
@@ -46,9 +45,6 @@ Page({
           [nickName]: res.userInfo.nickName,
         })
       }
-    })
-    this.setData({
-      objectId: options.objectId
     });
     //获取当前年月  
     const date = new Date();
@@ -130,7 +126,7 @@ Page({
       day = parseInt(day);
       for (var j = 0; j < daysArr.length; j++) {
         //年月日相同并且已打卡
-        if (year == that.data.cur_year && month == that.data.cur_month && daysArr[j].date == day && signs[i].isSign == "今日已打卡") {
+        if (year == that.data.cur_year && month == that.data.cur_month && daysArr[j].date == day) {
           daysArr[j].isSign = true;
         }
       }
@@ -209,6 +205,7 @@ Page({
             signUp: signs,
             count: signs.length
           });
+          that.onJudgeSign();
         }
       },
       complete: (res) => console.log(res)

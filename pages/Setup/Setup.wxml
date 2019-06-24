@@ -46,7 +46,7 @@
             <view class='cell' wx:else>
               <!-- 当前日期已签到 -->
               <view wx:if="{{days[j+k].isSign == true}}" style='background-color:#83C75D' class='cell'>
-                <button class='cell' bindtap="btn" id="{{days[j+k].date}}" >
+                <button bindtap="btn" id="{{days[j+k].date}}" >
                   <text>{{days[j+k].date}}</text>
                 </button>
               </view>

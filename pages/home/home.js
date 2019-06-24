@@ -1,75 +1,78 @@
 // pages/home/home.js
+import * as config from './../../config.js'
 Page({
-
-    /**
-     * 页面的初始数据
-     */
-    data: {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-
+  onLoad: function() {
+    var that = this;
+    var token = wx.getStorageSync("Token");
+    if (token && token.length != 0) {
+      wx.request({
+        url: config.directLogin,
+        method: 'POST',
+        data: {
+          Token: token
+        },
+        success: (res) => {
+          if (res.statusCode != 200) {
+            that.login();
+          } else if (res.statusCode == 200) {
+            that.checkInfo();
+          }
+        },
+        complete: (res) => console.log(res)
+      });
+    } else {
+      that.login();
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  login() {
+    var that = this;
+    wx.login({
+      success: (res) => {
+        wx.request({
+          url: config.loginUrl,
+          method: 'POST',
+          data: {
+            code: res.code
+          },
+          success: (res) => {
+            if (res.statusCode == 200) {
+              wx.setStorageSync("ID", res.data.ID);
+              wx.setStorageSync("Token", res.data.Token);
+              that.checkInfo();
+            }
+          },
+          complete: (res) => console.log(res)
+        });
+      }
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  checkInfo: () => {
+    wx.request({
+      url: config.getUserInfoUrl,
+      method: 'POST',
+      data: {
+        Token: wx.getStorageSync("Token")
+      },
+      success: (res) => {
+        if (res.statusCode == 200 && (res.data.Name.length + res.data.SchoolID.length) == 0) {
+          wx.navigateTo({
+            url: '/pages/info/info',
+          });
+        }
+        if (res.statusCode == 200 && (res.data.Name.length + res.data.SchoolID.length) != 0) {
+          wx.setStorageSync('Name', res.data.Name);
+          wx.setStorageSync('SchoolID', res.data.SchoolID);
+        }
+      },
+      complete: (res) => console.log(res)
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  signbt: function() {
+    wx.navigateTo({
+      url: '../sign/sign'
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
- signbt:function(){
-   wx.navigateTo({
-     url:'../sign/sign'
-   })
- },
- campbt: function () {
+  campbt: function() {
     wx.navigateTo({
       url: '../camp/camp'
     })

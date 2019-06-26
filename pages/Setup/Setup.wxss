@@ -1,5 +1,9 @@
 /* pages/Setup/Setup.wxss */
 
+.txt {
+  text-decoration: line-through;
+}
+
 .head-bg {
   width: 100%;
   background: #1aa7db;
@@ -104,7 +108,7 @@
   background-color: #acd;
 }
 
-.all .columns .rows .cell::after{
+.all .columns .rows .cell::after {
   border: none;
 }
 

@@ -2,6 +2,7 @@
 
 .txt {
   text-decoration: line-through;
+  color: white;
 }
 
 .head-bg {

@@ -44,7 +44,7 @@ Page({
       },
       success: (res) => {
         wx.hideLoading();
-        if (res.statusCode == 200) {
+        if (res.statusCode == 200 && res.data.code == 0) {
           wx.showToast({
             title: '发布成功',
             duration: 1500

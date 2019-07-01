@@ -22,15 +22,17 @@ Page({
       method: 'POST',
       data: {
         Token: wx.getStorageSync('Token'),
-        Time: parseInt(Date.parse(tapData.year.toString() + "-" + tapData.month.toString() 
-        + "-" + tapData.day.toString()) / 1000)
+        Time: parseInt(Date.parse(tapData.year.toString() + "-" + tapData.month.toString() +
+          "-" + tapData.day.toString()) / 1000)
       },
       success: (res) => {
         console.log(res);
         wx.hideLoading();
-        if (res.statusCode == 200) {
+        if (res.statusCode != 200)
+          return;
+        if (res.data.code == 0) {
           let data = app.towxml.toJson(
-            res.data.Content,
+            res.data.data.Content,
             'markdown'
           );
 
@@ -45,7 +47,7 @@ Page({
             icon: 'none',
             duration: 1500
           });
-          setTimeout(function () {
+          setTimeout(function() {
             wx.navigateBack({
               delta: 1
             });

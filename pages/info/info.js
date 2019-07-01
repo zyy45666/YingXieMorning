@@ -40,7 +40,7 @@ Page({
       },
       success: (res) => {
         wx.hideLoading();
-        if (res.statusCode == 200) {
+        if (res.statusCode == 200 && res.data.code == 0) {
           wx.setStorageSync("Name", this.data.name);
           wx.setStorageSync("SchoolId", this.data.schoolId);
           wx.navigateBack({

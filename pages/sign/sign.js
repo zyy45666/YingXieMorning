@@ -23,9 +23,9 @@ Page({
       },
       success: (res) => {
         wx.hideLoading();
-        if (res.statusCode == 200) {
+        if (res.statusCode == 200 && res.data.code == 0) {
           let data = app.towxml.toJson(
-            res.data.Content,
+            res.data.data.Content,
             'markdown'
           );
 
@@ -60,7 +60,7 @@ Page({
         Token: wx.getStorageSync("Token")
       },
       success: (res) => {
-        if (res.statusCode == 200) {
+        if (res.statusCode == 200 && res.data.code == 0) {
           wx.showToast({
             title: '打卡成功',
             duration: 1500

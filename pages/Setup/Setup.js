@@ -175,6 +175,7 @@ Page({
   //获取当前用户该任务的签到数组
   onGetSignUp: function() {
     var that = this;
+    //向服务端请求所有的打卡记录
     wx.request({
       url: config.punches,
       method: 'POST',
@@ -183,6 +184,7 @@ Page({
       },
       success: (res) => {
         if (res.statusCode == 200 && res.data.code == 0) {
+          //成功则设置打卡数组与打卡天数
           var signs = [];
           res.data.data.forEach((e) => {
             signs.push(e.Time);

@@ -22,8 +22,9 @@ Page({
       article: e.detail.value
     });
   },
-
+  //用户点击发布按钮
   putonbt() {
+    //未填写文章内容则提示用户
     if (this.data.article.length == 0) {
       wx.showToast({
         title: '请输入文章',
@@ -34,6 +35,7 @@ Page({
     wx.showLoading({
       title: '发布中',
     });
+    //以文章内容和选择的时间为参数请求服务端文章发布接口
     wx.request({
       url: config.publishUrl,
       method: 'POST',
@@ -44,6 +46,7 @@ Page({
       },
       success: (res) => {
         wx.hideLoading();
+        //成功则显示提示信息并返回
         if (res.statusCode == 200 && res.data.code == 0) {
           wx.showToast({
             title: '发布成功',
@@ -55,6 +58,7 @@ Page({
             });
           }, 1500)
         } else {
+          //不成功提示用户重试
           wx.showToast({
             title: '发布失败，请重试',
             icon: 'none'

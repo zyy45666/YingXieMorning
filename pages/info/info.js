@@ -18,8 +18,9 @@ Page({
       name: e.detail.detail.value
     });
   },
-
+  //用户点击确认按钮
   confirm() {
+    //未填写信息就提示用户
     if (this.data.name.length == 0 || this.data.schoolId.length == 0) {
       wx.showToast({
         title: '请输入非空信息',
@@ -30,6 +31,7 @@ Page({
     wx.showLoading({
       title: '信息上传中',
     })
+    //以用户填写的姓名，学号为参数调用服务端设置用户信息接口
     wx.request({
       url: config.setUserInfoUrl,
       method: 'POST',
@@ -40,6 +42,7 @@ Page({
       },
       success: (res) => {
         wx.hideLoading();
+        //成功则更新本地用户信息
         if (res.statusCode == 200 && res.data.code == 0) {
           wx.setStorageSync("Name", this.data.name);
           wx.setStorageSync("SchoolId", this.data.schoolId);
@@ -50,6 +53,7 @@ Page({
       },
       fail: () => {
         wx.hideLoading();
+        //失败就提示用户
         wx.showToast({
           title: '上传失败，请稍后再试',
           icon: 'none'
